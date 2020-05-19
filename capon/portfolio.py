@@ -1,9 +1,9 @@
+import typing
+
 import pandas as pd
 
 from capon.backends import yahoo as yf
 
-
-import typing
 
 class Lot(typing.NamedTuple):
     """
@@ -34,6 +34,7 @@ class Lot(typing.NamedTuple):
 # pd.DataFrame(lots)
 
 default_indexes = ['^GSPC', '^DJI', '^IXIC', '^RUT']
+
 
 class Portfolio():
     def __init__(self, lots):
