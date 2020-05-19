@@ -6,9 +6,8 @@
 | Gialdetti | [![PyPI](https://img.shields.io/pypi/v/capon.svg)](https://pypi.org/project/netsci/) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
 
 
-`capon` is a python package for easily obtain and analyze real-time stock data. Provides stock metadata and features.
-In addition, it offers simple APIs to track your personal stock portfolios and its updated status.
-
+`capon` is a python package for easily obtaining and analyzing real-time stock data. It provides extended datasets stock metadata and features.
+In addition, it offers simple APIs for tracking your personal stock portfolios and their updated status.
 
 ## Installing
 Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
