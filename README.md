@@ -3,7 +3,7 @@
 
 |    Author    |                 Version                  |                   Demo                   |
 | :----------: | :--------------------------------------: | :--------------------------------------: |
-| Gialdetti | [![PyPI](https://img.shields.io/pypi/v/capon.svg)](https://pypi.org/project/capon/) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmy_portfolio_performance.ipynb) |
+| Gialdetti | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=https%3A%2F%2Fgithub.com%2Fgialdetti%2Fcapon%2Fblob%2Fmaster%2Fexamples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
 
 
 `capon` is a python package for easily obtain and analyze real-time stock data. Provides stock metadata and features.
@@ -75,4 +75,4 @@ $ pytest
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmy_portfolio_performance.ipynb) | |    
+| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=https%3A%2F%2Fgithub.com%2Fgialdetti%2Fcapon%2Fblob%2Fmaster%2Fexamples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) | |    
