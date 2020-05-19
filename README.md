@@ -3,7 +3,7 @@
 
 |    Author    |                 Version                  |                   Demo                   |
 | :----------: | :--------------------------------------: | :--------------------------------------: |
-| Gialdetti | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
+| Gialdetti | [![PyPI](https://img.shields.io/pypi/v/capon.svg)](https://pypi.org/project/netsci/) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
 
 
 `capon` is a python package for easily obtain and analyze real-time stock data. Provides stock metadata and features.
