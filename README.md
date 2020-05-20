@@ -3,11 +3,11 @@
 
 |    Author    |                 Version                  |                   Demo                   |
 | :----------: | :--------------------------------------: | :--------------------------------------: |
-| Gialdetti | [![PyPI](https://img.shields.io/pypi/v/capon.svg)](https://pypi.org/project/netsci/) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
+| Gialdetti | [![PyPI](https://img.shields.io/pypi/v/capon.svg)](https://pypi.org/project/capon/) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) |  |
 
 
-`capon` is a python package for easily obtaining and analyzing real-time stock data. It provides extended datasets stock metadata and features.
-In addition, it offers simple APIs for tracking your personal stock portfolios and their updated status.
+`capon` is a python package for easily obtaining and analyzing real-time stock data. It provides extended datasets of stock metadata and features.
+In addition, it offers simple APIs for tracking your personal stock portfolios and their live status.
 
 ## Installing
 Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
@@ -74,4 +74,5 @@ $ pytest
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) | |    
+| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
+
