@@ -9,10 +9,21 @@
 `capon` is a python package for easily obtaining and analyzing real-time stock data. It provides extended datasets of stock metadata and features.
 In addition, it offers simple APIs for tracking your personal stock portfolios and their live status.
 
-## Installing
-Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
+## Installation
+### Install latest release version via [pip](https://pip.pypa.io/en/stable/quickstart/)
 ```bash
 $ pip install capon
+```
+
+### Install latest development version
+```bash
+$ pip install git+https://github.com/gialdetti/capon.git
+``` 
+or
+```bash
+$ git clone https://github.com/gialdetti/capon.git
+$ cd capon
+$ python setup.py install
 ```
 
 ## A simple example

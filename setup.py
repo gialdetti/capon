@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ["numpy>=1.17.3", "pandas>=1.0.3", "matplotlib>=3.1.1", "plotly>=4.7.1"]
+requirements = ["numpy>=1.17.3", "pandas>=1.0.3", "requests>=2.22.0", "matplotlib>=3.1.1", "plotly>=4.7.1"]
 
 setup(
     name="capon",
@@ -13,6 +13,7 @@ setup(
     description="Capital Market in Python",
     long_description=readme,
     long_description_content_type="text/markdown",
+    keywords=["capital market", "stocks", "data", "dashboard"],
     url="https://github.com/gialdetti/capon/",
     packages=find_packages(),
     install_requires=requirements,
