@@ -2,7 +2,7 @@ import logging
 import glob
 import pandas as pd
 
-from .common import get_resource_path
+# from .common import get_resource_path
 
 
 stock_indexes = pd.DataFrame([
