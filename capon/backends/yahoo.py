@@ -46,6 +46,24 @@ def get_stock(symbol, range='1d', interval=None):
 
 
 def stock(symbol, range='1d', interval=None):
+    """Get historical stock prices.
+
+    Parameters
+    ----------
+    symbol : str
+        The ticker symbol of the required stock.
+    range : {'1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'}, default '1d'
+        Specify the timeframe for the required data.
+    interval : {None, '1m', '2m', '15m', '1h', '1d', '1wk', '1mo'}, default None
+        Specify the time interval for the required data.
+        If None, then the default interval of the specified `range` is used.
+
+    Returns
+    -------
+    DataFrame
+        Listing stock price features for all timepoints in the required timeframe. Each row includes the open, high,
+        low, and close price for a given timepoint. If relevant, it will also include the adjusted closing price.
+    """
     jo = get_stock(symbol, range=range, interval=interval)
 
     result = jo['chart']['result'][0]

@@ -27,6 +27,17 @@ $ python setup.py install
 ```
 
 ## A simple example
+Get the historical stock price of AMD, and plot it.
+```python
+import capon
+
+amd = capon.stock('AMD', range='ytd')
+amd.plot(x='timestamp', y='adjclose')
+```
+![Alt text](./examples/images/readme_my_amd.png)
+
+
+## My portfolio example
 Track your personal stock portfolio with real-time data.
 
 a) Define my holdings
@@ -85,5 +96,5 @@ $ pytest
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples%2Fmonitoring%2Fmy_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
-
+| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/monitoring/my_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
+| Market indexes | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/stock_indexes.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/stock_indexes.ipynb) |

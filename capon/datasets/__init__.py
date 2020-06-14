@@ -1,1 +1,1 @@
-from .metadata import stock_indexes, load_metadata
+from .metadata import load_stock_indexes, load_metadata
