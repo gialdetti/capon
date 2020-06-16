@@ -36,7 +36,8 @@ class Portfolio():
 
     def status(self):
         performance = self.performance()
-        latest = performance.groupby('symbol').apply(lambda g: g.sort_values('timestamp').tail(1)).reset_index(drop=True)
+        latest = performance.groupby('symbol').apply(
+            lambda g: g.sort_values('timestamp').assign(daily_pct=lambda df: df['price'].pct_change()).tail(1)).reset_index(drop=True)
         return latest
 
     def performance(self, indexes=None):
