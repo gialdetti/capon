@@ -54,7 +54,7 @@ my_portfolio = Portfolio([
 ![Alt text](./examples/images/readme_my_portfolio.png)
 
 
-b) Sync with real-time stock data to find current status.
+b) Sync with real-time stock data to find current status
 ```python
 latest = my_portfolio.status()
 display(latest)
@@ -77,7 +77,7 @@ px.bar(latest.sort_values('gain_pct', ascending=False),
 ```
 ![Alt text](./examples/images/readme_my_portfolio_status_bar.png)
 
-d). Plot historical data
+d) Plot historical data
 ```
 performance = my_portfolio.performance()
 px.line(performance, x='timestamp', y='gain_pct', color='symbol')
