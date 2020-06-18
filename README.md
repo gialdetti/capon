@@ -43,6 +43,7 @@ Track your personal stock portfolio with real-time data.
 a) Define my holdings
 ```python
 from capon import Portfolio, Lot
+
 my_portfolio = Portfolio([
     Lot('2020-03-20', 'AMZN',   2, 1888.86),
     Lot('2020-03-20', 'TSLA',   8,  451.40),
@@ -78,11 +79,13 @@ px.bar(latest.sort_values('gain_pct', ascending=False),
 ![Alt text](./examples/images/readme_my_portfolio_status_bar.png)
 
 d) Plot historical data
-```
+```python
 performance = my_portfolio.performance()
 px.line(performance, x='timestamp', y='gain_pct', color='symbol')
 ```
 ![Alt text](./examples/images/readme_my_portfolio_history.png)
+
+The full example in a live notebook is provided [below](#examples).
 
 ## Testing
 After installation, you can launch the test suite:
