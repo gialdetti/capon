@@ -1,0 +1,3 @@
+defaults = dict(
+    template='capon',
+)
