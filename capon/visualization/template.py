@@ -28,6 +28,10 @@ pio.templates['capon'] = go.layout.Template(
 
 )
 
+# https://plotly.com/python/builtin-colorscales/
+# https://plotly.com/python/discrete-color/
 
-# fig = px.line(x=[1,2,3], y=[1,2,3])
-# fig.show()
+
+# from plotly.offline import plot
+# fig = px.line(x=[1,2,3], y=[1,3,2], title='Test', template='capon')
+# plot(fig)

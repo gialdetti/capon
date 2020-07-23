@@ -57,10 +57,10 @@ my_portfolio = Portfolio([
 
 b) Sync with real-time stock data to find current status
 ```python
-latest = my_portfolio.status()
-display(latest)
+status = my_portfolio.status()
+display(status)
 
-total_cost, total_value = latest.sum()[['cost', 'value']]
+total_cost, total_value = status.sum()[['cost', 'value']]
 print(f'Total cost: {total_cost:,.2f}; Market value: {total_value:,.2f}')
 print(f'Total gain: {total_value-total_cost:+,.2f} ({total_value/total_cost-1:+,.2%})')
 ```
@@ -68,20 +68,17 @@ print(f'Total gain: {total_value-total_cost:+,.2f} ({total_value/total_cost-1:+,
 
 c) Plot it
 ```python
-import plotly.express as px
-
-px.bar(latest.sort_values('gain_pct', ascending=False), 
-       x='symbol', y='gain_pct', color='gain_pct', 
-       text='gain_pct', hover_data=['gain'],
-       color_continuous_scale=px.colors.diverging.PiYG, color_continuous_midpoint=0,
-       title='My Holdings')
+from capon.visualization import plot_status
+plot_status(status)
 ```
 ![Alt text](./examples/images/readme_my_portfolio_status_bar.png)
 
 d) Plot historical data
 ```python
+import plotly.express as px
+
 performance = my_portfolio.performance()
-px.line(performance, x='timestamp', y='gain_pct', color='symbol')
+px.line(performance, x='timestamp', y='gain_pct', color='symbol', template='capon')
 ```
 ![Alt text](./examples/images/readme_my_portfolio_history.png)
 
