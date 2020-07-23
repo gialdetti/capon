@@ -25,7 +25,7 @@ fig.write_html('my_stock.html', auto_open=True)
 
 
 """
-Or, another alternatives are
+Or, other alternatives are:
 
 1) Directly by `fig.show()`, after setting the browser as the default renderer.
 ```
