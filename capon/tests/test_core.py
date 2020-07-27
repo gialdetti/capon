@@ -11,5 +11,9 @@ def test_adjclose():
 
 def test_index():
     sp500 = capon.stock('^GSPC')
-    assert len(sp500)>0
+    assert len(sp500) > 0
 
+
+def test_metadata():
+    metadata = capon.metadata('AMD')
+    assert metadata['symbol'] == 'AMD'
