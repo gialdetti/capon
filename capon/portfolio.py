@@ -36,16 +36,16 @@ class Portfolio():
 
     def status(self):
         performance = self.performance()
-        latest = performance.groupby('symbol').apply(
+        latest = performance.groupby(['timestamp_buy', 'symbol']).apply(
             lambda g: g.sort_values('timestamp').assign(daily_pct=lambda df: df['price'].pct_change()).tail(1)).reset_index(drop=True)
         return latest
 
     def performance(self, indexes=None):
         indexes = indexes or default_indexes
-        print(indexes)
+        # print(indexes)
 
         history = pd.concat([yf.stock(symbol, range='1y', interval='1d').dropna()
-                             for symbol in self.lots['symbol']], sort=False)
+                             for symbol in self.lots['symbol'].unique()], sort=False)
 
         import datetime
         current_tz = datetime.datetime.now().astimezone().tzinfo

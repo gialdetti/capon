@@ -1,4 +1,6 @@
 import numpy.testing as npt
+import pandas.testing as pdt
+
 from capon import Portfolio, Lot
 
 
@@ -38,3 +40,17 @@ def test_status_with_multiple_timezones():
 
     status = tz_portfolio.status()
     print(status[['timestamp_buy', 'symbol', 'timestamp', 'price']])
+
+
+def test_multiple_lots_per_ticker():
+    my_portfolio = Portfolio([
+        Lot('2020-03-20', 'AMZN',   2, 1888.86),
+        Lot('2020-03-23', 'GOOGL',  3, 1037.89),
+        Lot('2020-03-27', 'ZM',    20,  150.29),
+        Lot('2020-04-24', 'GOOGL',  6, 1270.00),
+    ])
+
+    # performance = my_portfolio.performance()
+
+    status = my_portfolio.status()
+    pdt.assert_series_equal(status['symbol'].value_counts(), my_portfolio.lots['symbol'].value_counts())
