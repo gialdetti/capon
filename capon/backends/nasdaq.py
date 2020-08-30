@@ -12,13 +12,12 @@ def metadata(symbol):
     }
     jo = get_json(url, headers)
 
-    metadata = pd.Series([], name=symbol)
     if ('data' in jo) and (jo['data'] is not None):
         metadata = pd.DataFrame(jo['data']).loc['value'].rename(symbol)
-        metadata = metadata.rename(dict(zip(
-            metadata.keys(),
-            metadata.keys().map(lambda name: re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()))))
-    
+        metadata = metadata.rename({k: camel_to_snake_case(k) for k in metadata.keys()})
+    else:
+        metadata = pd.Series([], name=symbol)
+
     return metadata
 
 
@@ -32,3 +31,6 @@ def get_json(url, headers={}):
 
     return jo
 
+
+def camel_to_snake_case(name):
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()

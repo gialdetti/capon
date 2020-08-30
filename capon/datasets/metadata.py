@@ -1,8 +1,10 @@
 import logging
 import glob
+import re
+
 import pandas as pd
 
-# from .common import get_resource_path
+from .common import get_resource_path
 
 
 stock_indexes = pd.DataFrame([
@@ -34,11 +36,16 @@ def load_stock_indexes():
     return stock_indexes.copy()
 
 
-# def load_metadata():
-#     metadata_filename = sorted(glob.glob(get_resource_path('metadata/stocks.metadata.*.gz')))[-1]
-#     logging.info(f'Loading metadata from "{metadata_filename}"..')
-#
-#     return pd.read_csv(metadata_filename)
+def load_metadata():
+    metadata_filename = sorted(glob.glob(get_resource_path('metadata/stocks.metadata.*.gz')),
+                               key=lambda s: parse_metadata_filename(s)['timestamp'])[-1]
+    logging.info(f'Loading metadata from "{metadata_filename}"..')
 
+    return pd.read_csv(metadata_filename)
+
+
+def parse_metadata_filename(filename):
+    m = re.match(r'.*stocks.metadata.x(?P<size>\d+)\.\((?P<timestamp>[0-9\.]+)\)\.csv.gz', filename)
+    return m.groupdict()
 
 

@@ -7,7 +7,7 @@ requirements = ["numpy>=1.17.3", "pandas>=1.0.3", "requests>=2.22.0", "plotly>=4
 
 setup(
     name="capon",
-    version="0.0.3",
+    version="0.0.4",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="Capital Market in Python",
