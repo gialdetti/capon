@@ -94,7 +94,15 @@ $ pytest
 
 ### Examples
 
+The tutorials below aim to provide a clear and concise demonstration of some of the most important capabilities of `capon`.
+For instance, a step-by-step building and real-time monitoring of your portfolio, fetching and analyzing stock historical
+data and using stocks metadata.
+
+To make it a bit more interesting (hopefully), each tutorial first poses a meaningful stock-market "research question".
+In the context of answering these questions, the tutorials demonstrate the relevant library features.  
+
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
 | My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/monitoring/my_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
 | Stock Market Crash and Rebound Amid Coronavirus | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/stock_indexes.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/stock_indexes.ipynb) |
+| Analyzing the Sector-level Crash and Rebound | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/sector_crash_and_rebound.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/sector_crash_and_rebound.ipynb) |

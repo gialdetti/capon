@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 * CHANGELOG.md file.
+* Examples: Interactive example for using capon's metadata api -
+  **"Analyzing the Sector-level Crash and Rebound"**.
 
 ## [0.0.4] - 2020-08-30
 ### Added
