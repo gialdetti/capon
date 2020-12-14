@@ -95,8 +95,8 @@ $ pytest
 ### Examples
 
 The tutorials below aim to provide a clear and concise demonstration of some of the most important capabilities of `capon`.
-For instance, a step-by-step building and real-time monitoring of your portfolio, fetching and analyzing stock historical
-data and using stocks metadata.
+For instance, step-by-step guides for building and real-time monitoring of your portfolio, for fetching and analyzing 
+stock historical data, or for using stocks metadata.
 
 To make it a bit more interesting (hopefully), each tutorial first poses a meaningful stock-market "research question".
 In the context of answering these questions, the tutorials demonstrate the relevant library features.  
