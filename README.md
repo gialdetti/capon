@@ -34,7 +34,7 @@ import capon
 amd = capon.stock('AMD', range='ytd')
 amd.plot(x='timestamp', y='adjclose')
 ```
-![Alt text](./examples/images/readme_amd.png)
+![Alt text](./examples/images/themes/capon/readme_amd.png)
 
 
 ## My portfolio example
@@ -52,7 +52,7 @@ my_portfolio = Portfolio([
     Lot('2020-03-27', 'ZM',    20,  150.29),
 ])
 ```
-![Alt text](./examples/images/readme_my_portfolio.png)
+![Alt text](./examples/images/themes/capon/readme_my_portfolio.png)
 
 
 b) Sync with real-time stock data to find current status
@@ -64,14 +64,14 @@ total_cost, total_value = status.sum()[['cost', 'value']]
 print(f'Total cost: {total_cost:,.2f}; Market value: {total_value:,.2f}')
 print(f'Total gain: {total_value-total_cost:+,.2f} ({total_value/total_cost-1:+,.2%})')
 ```
-![Alt text](./examples/images/readme_my_portfolio_status.png)
+![Alt text](./examples/images/themes/capon/readme_my_portfolio_status.png)
 
 c) Plot it
 ```python
 from capon.visualization import plot_status
 plot_status(status)
 ```
-![Alt text](./examples/images/readme_my_portfolio_status_bar.png)
+![Alt text](./examples/images/themes/capon/readme_my_portfolio_status_bar.png)
 
 d) Plot historical data
 ```python
@@ -80,7 +80,7 @@ import plotly.express as px
 performance = my_portfolio.performance()
 px.line(performance, x='timestamp', y='gain_pct', color='symbol', template='capon')
 ```
-![Alt text](./examples/images/readme_my_portfolio_history.png)
+![Alt text](./examples/images/themes/capon/readme_my_portfolio_history.png)
 
 The full example in a live notebook is provided [below](#examples).
 
