@@ -32,6 +32,12 @@ Get the historical stock price of AMD, and plot it.
 import capon
 
 amd = capon.stock('AMD', range='ytd')
+```
+![](./examples/images/themes/capon/readme_amd_dataframe.png)
+
+The historical data is given as a standard [pandas](https://pandas.pydata.org/) dataframe. 
+This allows a fast and powerful data analysis, manipulation and visualization. For instance,
+```python
 amd.plot(x='timestamp', y='adjclose')
 ```
 ![Alt text](./examples/images/themes/capon/readme_amd.png)
