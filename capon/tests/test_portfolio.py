@@ -54,3 +54,53 @@ def test_multiple_lots_per_ticker():
 
     status = my_portfolio.status()
     pdt.assert_series_equal(status['symbol'].value_counts(), my_portfolio.lots['symbol'].value_counts())
+
+
+def test_multiple_lots_per_ticker_different_time():
+    my_portfolio = Portfolio([
+        Lot('2020-03-20', 'AMZN',   2, 1888.86),
+        Lot('2020-03-23 10:00:00', 'GOOGL',  3, 1037.89),
+        Lot('2020-04-23 10:00:01', 'GOOGL',  6, 1270.00),
+    ])
+
+    status = my_portfolio.status()
+    pdt.assert_series_equal(status['symbol'].value_counts(), my_portfolio.lots['symbol'].value_counts())
+
+
+def _test_averaged_price():
+    my_portfolio = Portfolio([
+        Lot('2020-03-20', 'AMZN',   2, 1888.86),
+        Lot('2020-03-23', 'GOOGL',  1, 1037.89),
+        Lot('2020-03-27', 'ZM',    20,  150.29),
+        Lot('2020-04-24', 'GOOGL',  2, 1270.00),
+        Lot('2020-04-25', 'GOOGL',  3, 1280.00),
+        Lot('2020-04-26', 'GOOGL',  4, 1280.00),
+    ])
+
+    my_portfolio.lots.sort_values('timestamp') \
+        .groupby('symbol').agg({
+            'timestamp':'last',
+            'quantity':'sum',
+            'cost':'sum',
+        }) \
+        .reset_index() \
+        .assign(average_price=lambda df: df['cost']/df['quantity'])
+
+    # Sell
+    symbol, quantity = 'GOOGL', 5
+
+
+
+    my_portfolio.lots.sort_values('timestamp')
+    my_portfolio.status()
+
+    my_portfolio.lots.sort_values('timestamp') \
+        .query(f'symbol == "{symbol}"') \
+        ['quantity'].cumsum() - quantity
+
+
+    import pandas as pd
+    pd.set_option('display.max_rows', 500)
+    pd.set_option('display.max_columns', 500)
+    pd.set_option('display.width', 1000)
+

@@ -7,17 +7,21 @@ from capon.backends import nasdaq
 
 
 def test_existing_symbol():
-    metadata = nasdaq.metadata('AMZN')
+    symbol = 'AMZN'
+    metadata = nasdaq.metadata(symbol)
 
     assert type(metadata) == pd.Series
-    assert metadata['symbol']=='AMZN'
+    assert metadata.name == symbol
+    assert metadata['symbol'] == symbol
 
 
-# def test_invalid_symbol():
-#     metadata = nasdaq.metadata(':):)')
-#
-#     assert type(metadata) == pd.Series
-#     assert len(metadata) == 0
+def test_invalid_symbol():
+    bad_symbol = ':):)'
+    metadata = nasdaq.metadata(bad_symbol)
+
+    assert type(metadata) == pd.Series
+    assert metadata.name == bad_symbol
+    assert len(metadata) == 0
 
 
 if False:
