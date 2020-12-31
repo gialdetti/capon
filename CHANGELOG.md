@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.0.5] - 2020-12-31
 ### Added
 * CHANGELOG.md file.
 * Examples: Interactive example for using capon's metadata api -
   **"Analyzing the Sector-level Crash and Rebound"**.
+* API: OTC backend - screener
+* API: Nasdaq backend - extended API and screener
 
 ## [0.0.4] - 2020-08-30
 ### Added
@@ -37,7 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Examples: Interactive example for using capon's portfolio **"My Stock Portfolio Performance"**.
 - DOC: README file.
 
-[unreleased]: https://github.com/gialdetti/capon/compare/3b47851...HEAD
+[unreleased]: https://github.com/gialdetti/capon/compare/f74d79e...HEAD
+[0.0.5]: https://github.com/gialdetti/capon/compare/3b47851...f74d79e
 [0.0.4]: https://github.com/gialdetti/capon/compare/fa4ab8e...3b47851
 [0.0.3]: https://github.com/gialdetti/capon/compare/d03b7b9...fa4ab8e
 [0.0.2]: https://github.com/gialdetti/capon/compare/faf8aef...d03b7b9
