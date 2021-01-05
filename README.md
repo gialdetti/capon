@@ -90,12 +90,6 @@ px.line(performance, x='timestamp', y='gain_pct', color='symbol', template='capo
 
 The full example in a live notebook is provided [below](#examples).
 
-## Testing
-After installation, you can launch the test suite:
-```bash
-$ pytest
-```
-
 ## Help and Support
 
 ### Examples
@@ -109,6 +103,14 @@ In the context of answering these questions, the tutorials demonstrate the relev
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| My Stock Portfolio Performance | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/monitoring/my_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
-| Stock Market Crash and Rebound Amid Coronavirus | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/stock_indexes.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/stock_indexes.ipynb) |
-| Analyzing the Sector-level Crash and Rebound | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/sector_crash_and_rebound.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/sector_crash_and_rebound.ipynb) |
+| [My Stock Portfolio Performance](https://nbviewer.jupyter.org/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/monitoring/my_portfolio_performance.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/monitoring/my_portfolio_performance.ipynb) |    
+| [Stock Market Crash and Rebound Amid Coronavirus](https://nbviewer.jupyter.org/github/gialdetti/capon/blob/master/examples/market_analysis/stock_indexes.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/stock_indexes.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/stock_indexes.ipynb) |
+| [Analyzing the Sector-level Crash and Rebound](https://nbviewer.jupyter.org/github/gialdetti/capon/blob/master/examples/market_analysis/sector_crash_and_rebound.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/capon/master?filepath=examples/market_analysis/sector_crash_and_rebound.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/capon/blob/master/examples/market_analysis/sector_crash_and_rebound.ipynb) |
+
+
+## Testing
+After cloning and installing the development version, you can launch the test suite:
+```bash
+$ pytest
+```
+
