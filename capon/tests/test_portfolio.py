@@ -27,6 +27,24 @@ def test_status():
     my_portfolio.status()
 
 
+def test_performance_with_anchor():
+    my_portfolio = Portfolio([
+        Lot('2021-01-19', 'AMZN',   2, 3263.38),
+        Lot('2021-01-20', 'GOOGL',  3, 1884.15),
+    ])
+
+    anchor1, anchor2 = '2021-01-22', '2021-01-23'
+
+    performance1 = my_portfolio.performance(anchor=anchor1)
+    performance2 = my_portfolio.performance(anchor=anchor2)
+
+    npt.assert_array_equal(performance1['symbol'].value_counts()[['AMZN', 'GOOGL']], [3, 2])
+    npt.assert_array_equal(performance2['symbol'].value_counts()[['AMZN', 'GOOGL']], [4, 3])
+
+    pdt.assert_frame_equal(performance2[performance2['timestamp'] <= anchor1].reset_index(drop=True),
+                           performance1.reset_index(drop=True))
+
+
 def test_status_with_multiple_timezones():
     tz_portfolio = Portfolio([
         Lot('2020-01-01', '3690.HK', 1, 10),

@@ -33,19 +33,20 @@ class Portfolio():
         lots['cost'] = lots['cost'].where(lots['cost'].notna(), lots['price']*lots['quantity']).astype({'cost': float})
         self.lots = lots
 
-
-    def status(self):
-        performance = self.performance()
+    def status(self, anchor=None):
+        performance = self.performance(anchor=anchor)
         latest = performance.groupby(['timestamp_buy', 'symbol']).apply(
             lambda g: g.sort_values('timestamp').assign(daily_pct=lambda df: df['price'].pct_change()).tail(1)).reset_index(drop=True)
         return latest
 
-    def performance(self, indexes=None):
+    def performance(self, indexes=None, anchor=None):
         indexes = indexes or default_indexes
         # print(indexes)
 
         history = pd.concat([yf.stock(symbol, range='1y', interval='1d').dropna()
                              for symbol in self.lots['symbol'].unique()], sort=False)
+        if anchor is not None:
+            history = history[history['timestamp'] <= anchor]
 
         import datetime
         current_tz = datetime.datetime.now().astimezone().tzinfo
