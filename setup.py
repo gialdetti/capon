@@ -13,7 +13,7 @@ setup(
     description="Capital Market in Python",
     long_description=readme,
     long_description_content_type="text/markdown",
-    keywords=["capital-markets", "stocks", "stock-market", "finance", "dataset", "portfolio", "dashboard"],
+    keywords=["capital markets", "stocks", "stock market", "finance", "dataset", "portfolio", "dashboard", "yahoo finance"],
     url="https://github.com/gialdetti/capon/",
     packages=find_packages(),
     install_requires=requirements,
