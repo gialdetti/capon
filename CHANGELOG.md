@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 * API: Portfolio - support anchor time for performance computations.
+* API: Utils - `normalize_values`
 
 ## [0.0.5] - 2020-12-31
 ### Added
