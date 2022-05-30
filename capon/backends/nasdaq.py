@@ -46,7 +46,7 @@ def profile(symbol):
     url = urls['profile'].format(symbol=symbol)
     jo = get_json(url, headers)
 
-    if (jo['data'] is not None):
+    if ('data' in jo) and (jo['data'] is not None):
         profile = pd.DataFrame(jo['data']).loc['value'].rename(symbol) \
             .pipe(camel_case_keys)
     else:

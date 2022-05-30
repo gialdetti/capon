@@ -33,7 +33,9 @@ def get_stock(symbol, range='1d', interval=None):
     interval = interval or valid_range_intervals[range]
     url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?region=US&lang=en-US&includePrePost=false&interval={interval}&range={range}&corsDomain=finance.yahoo.com&.tsrc=finance'
 
-    headers = {}
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0'
+    }
     response = requests.get(url, headers=headers)
     logging.info(f'{response.url}.. {response.status_code}')
 

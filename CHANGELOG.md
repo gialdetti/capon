@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * API: Portfolio - support anchor time for performance computations.
 * API: Utils - `normalize_values`.
 * Visualization - plot history.
+* FIX: Update to new Yahoo API (user-agent).
 
 ## [0.0.5] - 2020-12-31
 ### Added
