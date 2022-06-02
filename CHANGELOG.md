@@ -49,9 +49,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Examples: Interactive example for using capon's portfolio **"My Stock Portfolio Performance"**.
 - DOC: README file.
 
-[unreleased]: https://github.com/gialdetti/capon/compare/f74d79e...HEAD
+[unreleased]: https://github.com/gialdetti/capon/compare/2d2c32e...HEAD
+[0.0.6]: https://github.com/gialdetti/capon/compare/f74d79e...2d2c32e
 [0.0.5]: https://github.com/gialdetti/capon/compare/3b47851...f74d79e
 [0.0.4]: https://github.com/gialdetti/capon/compare/fa4ab8e...3b47851
 [0.0.3]: https://github.com/gialdetti/capon/compare/d03b7b9...fa4ab8e
 [0.0.2]: https://github.com/gialdetti/capon/compare/faf8aef...d03b7b9
 [0.0.1]: https://github.com/gialdetti/capon/compare/3125ac6...faf8aef
+
