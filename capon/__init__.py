@@ -6,4 +6,17 @@ try:
     from .visualization import template
 except ModuleNotFoundError as e:
     import logging
-    logging.warning(e)
+
+    logger = logging.getLogger(__name__)
+    logger.warning(e)
+
+try:
+    from .visualization import plot_history as plot
+except ModuleNotFoundError as e:
+    import logging
+
+    logger = logging.getLogger(__name__)
+    logger.warning(e)
+
+    def plot(*args, **kwargs):
+        raise "Please install visualization library."

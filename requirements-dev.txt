@@ -1,0 +1,21 @@
+# Core
+requests==2.27.1
+numpy==1.22.4
+pandas==1.4.2
+scikit-learn==1.1.1
+tqdm==4.64.0
+
+# Visualization
+matplotlib==3.5.2
+altair==4.2.0
+
+# IDE
+notebook==6.4.11
+ipywidgets==7.7.0
+black==22.3.0
+
+# Testing
+pytest==7.1.2
+
+# Publishing
+twine==4.0.0
