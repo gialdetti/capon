@@ -16,6 +16,7 @@ black==22.3.0
 
 # Testing
 pytest==7.1.2
+tox==3.25.1
 
 # Publishing
 twine==4.0.0
