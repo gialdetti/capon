@@ -3,7 +3,7 @@ import pandas as pd
 import numpy.testing as npt
 import pandas.testing as pdt
 
-from capon.utils import listify, normalize_values, normalize_traces
+from capon.preprocessing import listify, normalize_values, normalize_traces
 
 
 def test_listify():

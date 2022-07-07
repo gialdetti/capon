@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 * DATA: Up-to-date metadata.
+* Visualization: altair plotter
 
 ## [0.0.6] - 2022-06-02
 ### Added

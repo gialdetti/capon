@@ -11,7 +11,8 @@ except ModuleNotFoundError as e:
     logger.warning(e)
 
 try:
-    from .visualization import plot_history as plot
+    # from .visualization import plot_history as plot
+    from .visualization.altairplotter import plot_history as plot
 except ModuleNotFoundError as e:
     import logging
 

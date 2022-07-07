@@ -49,4 +49,5 @@ def normalize_traces(
         .astype(np.number)
     )
 
+    assert traces.index.nunique() == len(traces), "traces index must be unique"
     return traces[[index, by]].join(normalized)
