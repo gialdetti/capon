@@ -20,4 +20,4 @@ except ModuleNotFoundError as e:
     logger.warning(e)
 
     def plot(*args, **kwargs):
-        raise "Please install visualization library."
+        raise ImportError("altair not found, please install it")
