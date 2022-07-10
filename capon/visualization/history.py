@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from capon.preprocessing import normalize_values
+from capon.preprocessing import normalize_traces
 
 
 def plot_history(stocks, anchor, title=""):
@@ -17,11 +17,11 @@ def plot_history(stocks, anchor, title=""):
 
     """
 
-    stocks_ts_normed = normalize_values(stocks, anchor)
+    stocks_ts_normed = normalize_traces(stocks, to=anchor)
 
     fig = px.line(
         stocks_ts_normed,
-        x="date",
+        x="timestamp",
         y="adjclose",
         color="symbol",
         title=f"{title}: Historical changes from {anchor}",

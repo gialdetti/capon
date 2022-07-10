@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Data: Up-to-date metadata.
 * Visualization: altair plotter.
 * Tests: tox testing.
+* API: yahoo finance history API.
 
 ## [0.0.6] - 2022-06-02
 ### Added

@@ -10,7 +10,7 @@ def plot_history(
     if normalize is not None:
         if normalize == "start":
             normalize = stocks[index].min()
-        stocks = normalize_traces(stocks, to=normalize)
+        stocks = normalize_traces(stocks, to=normalize, index=index, by=by)
         value_params = dict(
             axis=dict(format="+%"),
             tooltip=dict(format="+.2%"),
@@ -20,22 +20,32 @@ def plot_history(
     if point:
         line_kwargs = dict(point={"filled": False, "fill": "white"})
 
-    line = (
-        alt.Chart(stocks)
-        .mark_line(**line_kwargs)
+    highlight = alt.selection(type="single", on="mouseover", fields=[by], nearest=True)
+
+    base = alt.Chart(stocks).encode(
+        x=f"{index}:T",
+        y=alt.Y(f"{value}:Q", axis=alt.Axis(**value_params.get("axis", {}))),
+        color=f"{by}:N",
+    )
+
+    points = (
+        base.mark_circle()
         .encode(
-            x=f"{index}:T",
-            y=alt.Y(f"{value}:Q", axis=alt.Axis(**value_params.get("axis", {}))),
-            color=f"{by}:N",
+            opacity=alt.value(0),
             tooltip=[index, alt.Tooltip(value, **value_params.get("tooltip", {})), by],
         )
-        .properties(width=800, height=240)
+        .add_selection(highlight)
     )
-    chart = line
+
+    lines = base.mark_line(**line_kwargs).encode(
+        # size=alt.condition(~highlight, alt.value(2), alt.value(3))
+    )
+
+    chart = points + lines
 
     if normalize is not None:
         rule = (
-            alt.Chart(stocks[stocks[index] >= normalize].iloc[:1])
+            alt.Chart(stocks[stocks[index] >= normalize].nsmallest(1, index))
             .mark_rule(color="black")
             .encode(x=f"{index}:T")
         )
@@ -43,8 +53,10 @@ def plot_history(
         chart += rule
 
     return chart.properties(
+        width=800,
+        height=240,
         title=f"Historical Changes"
-        + (f" from {normalize}" if normalize is not None else "")
+        + (f" from {normalize}" if normalize is not None else ""),
     )
 
 
@@ -76,3 +88,26 @@ if __name__ == "__main__":
         point=True,
     )
     chart.display()
+
+
+if __name__ == "__main__":
+    from capon.datasets import load_stock_indexes
+
+    tickers = (
+        load_stock_indexes()
+        .pipe(lambda df: df[df["country_code"] == "US"])
+        .symbol.tolist()
+    )
+
+    stocks = pd.concat(
+        [
+            capon.stock(ticker, range="10y", interval="1mo").iloc[:-1]
+            for ticker in tqdm(tickers)
+        ],
+        ignore_index=True,
+    ).pipe(lambda df: df[df["timestamp"] >= "2013"])
+    stocks
+
+    capon.plot(
+        stocks.merge(load_stock_indexes(), on="symbol"), by="name", normalize="start"
+    )

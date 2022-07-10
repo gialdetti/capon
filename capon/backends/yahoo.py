@@ -5,8 +5,10 @@
 import logging
 import os
 import requests
+from datetime import datetime
 
 import pandas as pd
+
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +63,7 @@ def get_stock(symbol, range="1d", interval=None):
 
 
 def stock(symbol, range="1d", interval=None):
-    """Get historical stock prices.
+    """Get live & historical stock prices.
 
     Parameters
     ----------
@@ -102,3 +104,40 @@ def stock(symbol, range="1d", interval=None):
     # len(ts), len(quote), len(adjclose)
     stock = pd.concat([ts, quote, adjclose], axis=1)
     return stock
+
+
+def history(symbol, start_date, end_date, interval="1mo"):
+    start_ts = int(datetime.strptime(start_date, "%Y-%m-%d").timestamp())
+    end_ts = int(datetime.strptime(end_date, "%Y-%m-%d").timestamp())
+
+    url = (
+        f"https://query1.finance.yahoo.com/v7/finance/download/{symbol}?"
+        f"period1={start_ts}&period2={end_ts}&interval={interval}&includeAdjustedClose=true&includePrePost=false"
+    )
+
+    # range, interval = "ytd", "1wk"
+    # # range, interval = "1d", "2m"
+    # range, interval = "1d", "1h"
+
+    # url = (
+    #     f"https://query1.finance.yahoo.com/v7/finance/download/{symbol}?"
+    #     f"range={range}&interval={interval}&includeAdjustedClose=true&includePrePost=false"
+    # )
+    logger.info(url)
+
+    history = (
+        pd.read_csv(url, parse_dates=["Date"])
+        .assign(symbol=symbol)
+        .rename(str.lower, axis=1)
+        .rename({"date": "timestamp", "adj close": "adjclose"}, axis=1)
+        .set_index(["timestamp", "symbol"])
+        .reset_index()
+    )
+    return history
+
+
+if __name__ == "__main__":
+    logging.basicConfig()
+    logger.setLevel(logging.INFO)
+
+    history("AAPL", start_date="1980-01-01", end_date="2025-01-01", interval="1wk")
