@@ -68,6 +68,7 @@ def shift(g, index="timestamp", value="close", days=(-1, -7), fillna=None):
         how="left",
         validate="one_to_one",
     )
+    windows.index = g.index  # hack since merge cleans index
 
     return windows
 

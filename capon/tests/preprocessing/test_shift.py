@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 import numpy.testing as npt
+import pandas.testing as pdt
 
 from capon.preprocessing import shift
 
@@ -87,3 +88,17 @@ def test_shift_days_delta():
     assert all(days_delta.min().dt.days >= days)
 
     # windows = stocks.groupby('symbol').apply(shift)
+
+
+def test_shift_missing_and_unordered():
+    days, fillna = +7, "bfill"
+
+    df = create_dummy_stocks(n_symbols=1).sample(frac=0.1, random_state=1)
+    df_shifted = shift(df, days=days, fillna=fillna)
+
+    pdt.assert_frame_equal(df, df_shifted[df.columns])
+
+    pdt.assert_frame_equal(
+        df_shifted.sort_values("timestamp"),
+        shift(df.sort_values("timestamp"), days=days, fillna=fillna),
+    )
