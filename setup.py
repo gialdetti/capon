@@ -13,7 +13,7 @@ requirements = [
 
 setup(
     name="capon",
-    version="0.0.7",
+    version="0.0.8",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="Capital Market in Python",

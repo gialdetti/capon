@@ -37,13 +37,23 @@ valid_range_intervals = {
 # url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?region=US&lang=en-US&includePrePost=false&interval=2m&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance'
 
 
-def get_stock(symbol, range="1d", interval=None):
+def get_stock(symbol, range="1d", interval=None, start_date=None, end_date=None):
     if range not in valid_range_intervals.keys():
         raise ValueError(
             f"range must be from {list(valid_range_intervals.keys())}, got '{range}'"
         )
     interval = interval or valid_range_intervals[range]
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?region=US&lang=en-US&includePrePost=false&interval={interval}&range={range}&corsDomain=finance.yahoo.com&.tsrc=finance"
+
+    if (start_date is not None) and (end_date is not None):
+        start_ts = int(datetime.strptime(start_date, "%Y-%m-%d").timestamp())
+        end_ts = int(datetime.strptime(end_date, "%Y-%m-%d").timestamp())
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?region=US&lang=en-US&includePrePost=false&interval={interval}&range={range}&corsDomain=finance.yahoo.com&.tsrc=finance"
+        url = (
+            f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?"
+            f"region=US&lang=en-US&includePrePost=false&interval={interval}&corsDomain=finance.yahoo.com&.tsrc=finance"
+            f"&period1={start_ts}&period2={end_ts}&interval={interval}"
+        )
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0"
@@ -62,7 +72,7 @@ def get_stock(symbol, range="1d", interval=None):
     return jo
 
 
-def stock(symbol, range="1d", interval=None):
+def stock(symbol, range="1d", interval=None, start_date=None, end_date=None):
     """Get live & historical stock prices.
 
     Parameters
@@ -81,7 +91,9 @@ def stock(symbol, range="1d", interval=None):
         Listing stock price features for all timepoints in the required timeframe. Each row includes the open, high,
         low, and close price for a given timepoint. If relevant, it will also include the adjusted closing price.
     """
-    jo = get_stock(symbol, range=range, interval=interval)
+    jo = get_stock(
+        symbol, range=range, interval=interval, start_date=start_date, end_date=end_date
+    )
 
     result = jo["chart"]["result"][0]
     metadata = result["meta"]
@@ -140,4 +152,11 @@ if __name__ == "__main__":
     logging.basicConfig()
     logger.setLevel(logging.INFO)
 
-    history("AAPL", start_date="1980-01-01", end_date="2025-01-01", interval="1wk")
+    stocks1 = history(
+        "AAPL", start_date="1980-01-01", end_date="2025-01-01", interval="1wk"
+    )
+    stocks1
+
+    stocks2 = stock(
+        "AAPL", start_date="1980-01-01", end_date="2025-01-01", interval="1d"
+    )

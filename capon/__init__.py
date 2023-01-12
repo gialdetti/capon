@@ -1,4 +1,3 @@
-from .portfolio import Lot, Portfolio
 from .backends.yahoo import stock
 from .backends.nasdaq import metadata
 

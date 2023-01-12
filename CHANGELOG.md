@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Added
+
+
+### [0.0.8] - 2023-01-12
+* API: yahoo finance history API (supporting start and end dates).
+* API: portfolio support custom history, and sell orders.
+
+## [0.0.7] - 2022-07-07
 * Data: Up-to-date metadata.
 * Visualization: altair plotter.
 * Tests: tox testing.
-* API: yahoo finance history API.
 
 ## [0.0.6] - 2022-06-02
 ### Added
@@ -54,7 +59,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Examples: Interactive example for using capon's portfolio **"My Stock Portfolio Performance"**.
 - DOC: README file.
 
-[unreleased]: https://github.com/gialdetti/capon/compare/2d2c32e...HEAD
+[unreleased]: https://github.com/gialdetti/capon/compare/fb5bc6a...HEAD
+[0.0.8]: https://github.com/gialdetti/capon/compare/fb5bc6a...HEAD
+[0.0.7]: https://github.com/gialdetti/capon/compare/2d2c32e...fb5bc6a
 [0.0.6]: https://github.com/gialdetti/capon/compare/f74d79e...2d2c32e
 [0.0.5]: https://github.com/gialdetti/capon/compare/3b47851...f74d79e
 [0.0.4]: https://github.com/gialdetti/capon/compare/fa4ab8e...3b47851
