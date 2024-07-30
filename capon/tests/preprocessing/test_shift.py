@@ -70,7 +70,6 @@ def test_shift_days_delta():
     # display(
     #     windows.iloc[0:].head(14).style.background_gradient(cmap="RdYlGn", axis=None)
     # )
-
     days_delta = windows[["timestamp"]].values - windows.filter(like="timestamp_prev")
     assert all(days_delta.min().dt.days >= np.abs(days))
 
@@ -83,7 +82,6 @@ def test_shift_days_delta():
     # display(
     #     windows.iloc[0:].tail(14).style.background_gradient(cmap="RdYlGn", axis=None)
     # )
-
     days_delta = windows.filter(like="timestamp_next") - windows[["timestamp"]].values
     assert all(days_delta.min().dt.days >= days)
 

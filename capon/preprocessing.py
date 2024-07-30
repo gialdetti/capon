@@ -62,9 +62,12 @@ def shift(g, index="timestamp", value="close", days=(-1, -7), fillna=None):
     ).sort_index()
 
     if fillna is not None:
-        windows = pd.concat(
-            [s, windows.drop(s.columns, axis=1).fillna(method=fillna)], axis=1
-        )
+        fillna = {
+            "bfill": lambda df: df.bfill(),
+            "ffill": lambda df: df.ffill(),
+        }[fillna]
+
+        windows = pd.concat([s, windows.drop(s.columns, axis=1).pipe(fillna)], axis=1)
 
     windows = g.merge(
         windows.dropna(subset=[index, value]).reset_index(drop=True),
