@@ -31,12 +31,16 @@ def normalize_traces(
 
     normalized = (
         traces.groupby(by)
-        .apply(lambda g: g[values] / g[g[index] >= to].iloc[0][values] - baseline)
+        .apply(
+            lambda g: g[values] / g[g[index] >= to].nsmallest(1, index).iloc[0][values]
+            - baseline
+        )
+        .reset_index(by, drop=True)
         .astype(np.number)
     )
 
     assert traces.index.nunique() == len(traces), "traces index must be unique"
-    return traces[[index, by]].join(normalized)
+    return traces[[index, by]].join(normalized, validate="1:1")
 
 
 def shift(g, index="timestamp", value="close", days=(-1, -7), fillna=None):

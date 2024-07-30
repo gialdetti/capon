@@ -60,18 +60,26 @@ def test_normalize_traces():
     stocks_normalized = normalize_traces(
         stocks, "2020-01-02", values="adjclose"
     ).sort_values("symbol")
-    # print(stocks_normalized)
     pdt.assert_frame_equal(
-        stocks_normalized.reset_index(drop=True),
-        expected[["timestamp", "symbol", "adjclose"]],
+        stocks_normalized, expected[["timestamp", "symbol", "adjclose"]]
     )
 
     # multiple columns
     stocks_normalized = normalize_traces(
         stocks, "2020-01-02", values=["adjclose", "open"]
     ).sort_values("symbol")
-    # print(stocks_normalized)
-    pdt.assert_frame_equal(stocks_normalized.reset_index(drop=True), expected)
+    pdt.assert_frame_equal(stocks_normalized, expected)
+
+    # random order
+    stocks_shuffled = stocks.sample(frac=1, ignore_index=True)
+    expected_shuffled = stocks_shuffled.drop(["adjclose", "open"], axis=1).merge(
+        expected, on=["timestamp", "symbol"]
+    )
+    stocks_shuffled_normalized = normalize_traces(
+        stocks_shuffled, "2020-01-02", values=["adjclose", "open"]
+    )
+    # display(stocks_shuffled, stocks_shuffled_normalized)
+    pdt.assert_frame_equal(stocks_shuffled_normalized, expected_shuffled)
 
 
 def test_normalize_traces_to():

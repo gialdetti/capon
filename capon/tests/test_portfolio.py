@@ -86,9 +86,9 @@ def test_status_with_multiple_timezones():
     tz_portfolio = Portfolio(
         [
             Lot("2020-01-01", "3690.HK", 1, 10),
-            Lot("2020-01-01", "RATI-L.TA", 2, 20),
+            Lot("2020-01-01", "TEVA.TA", 2, 20),
             Lot("2020-01-01", "LHA.DE", 3, 30),
-            Lot("2020-01-01", "IVR", 4, 40),
+            Lot("2020-01-01", "BAC", 4, 40),
         ]
     )
 

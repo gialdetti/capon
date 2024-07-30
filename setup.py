@@ -1,15 +1,26 @@
 from setuptools import setup, find_packages
 
+
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = [
+
+base_packages = [
+    "requests>=2.22.0",
     "numpy>=1.17.3",
     "pandas>=1.0.3",
-    "requests>=2.22.0",
-    "plotly>=4.7.1",
     "tqdm",
 ]
+plotly_packages = base_packages + ["plotly>=4.7.1"]
+test_packages = ["pytest", "ipython", "tox"]
+docs_packages = ["black"]
+dev_packages = (
+    ["notebook", "matplotlib", "ipywidgets", "seaborn", "altair", "themes"]
+    + ["scikit-learn"]
+    + docs_packages
+    + test_packages
+)
+
 
 setup(
     name="capon",
@@ -31,7 +42,12 @@ setup(
     ],
     url="https://github.com/gialdetti/capon/",
     packages=find_packages(),
-    install_requires=requirements,
+    install_requires=base_packages,
+    extras_require={
+        "test": test_packages,
+        "docs": docs_packages,
+        "dev": dev_packages,
+    },
     include_package_data=True,
     # package_data={'datasets': ['capon/resources/*']},
     classifiers=[
