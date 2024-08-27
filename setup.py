@@ -6,19 +6,19 @@ with open("README.md", "r") as readme_file:
 
 
 base_packages = [
-    "requests>=2.32.3",
-    "numpy>=2.0.1",
-    "pandas>=2.2.2",
-    "tqdm",
+    "requests>=2.31.0",
+    "numpy>=1.17.3",
+    "pandas>=1.0.3",
+    "tqdm>=4.66.3",
     "joblib",
 ]
 plotly_packages = ["plotly>=4.7.1"]
 altair_packages = ["altair"]
 test_packages = ["pytest", "ipython", "tox"]
-docs_packages = ["black"]
+docs_packages = ["black>=24.3.0"]
 dev_packages = (
     ["notebook", "matplotlib", "ipywidgets", "seaborn", "themes"]
-    + ["scikit-learn"]
+    + ["scikit-learn>=1.5.0"]
     + altair_packages
     + docs_packages
     + test_packages
@@ -27,7 +27,7 @@ dev_packages = (
 
 setup(
     name="capon",
-    version="0.0.9",
+    version="0.0.91",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="Capital Market in Python",
