@@ -33,10 +33,11 @@ def normalize_traces(
         traces.groupby(by)
         .apply(
             lambda g: g[values] / g[g[index] >= to].nsmallest(1, index).iloc[0][values]
-            - baseline
+            - baseline,
+            include_groups=False,
         )
         .reset_index(by, drop=True)
-        .astype(np.number)
+        .astype(float)
     )
 
     assert traces.index.nunique() == len(traces), "traces index must be unique"
