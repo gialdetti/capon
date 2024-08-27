@@ -6,17 +6,20 @@ with open("README.md", "r") as readme_file:
 
 
 base_packages = [
-    "requests>=2.22.0",
-    "numpy>=1.17.3",
-    "pandas>=1.0.3",
+    "requests>=2.32.3",
+    "numpy>=2.0.1",
+    "pandas>=2.2.2",
     "tqdm",
+    "joblib",
 ]
-plotly_packages = base_packages + ["plotly>=4.7.1"]
+plotly_packages = ["plotly>=4.7.1"]
+altair_packages = ["altair"]
 test_packages = ["pytest", "ipython", "tox"]
 docs_packages = ["black"]
 dev_packages = (
-    ["notebook", "matplotlib", "ipywidgets", "seaborn", "altair", "themes"]
+    ["notebook", "matplotlib", "ipywidgets", "seaborn", "themes"]
     + ["scikit-learn"]
+    + altair_packages
     + docs_packages
     + test_packages
 )
@@ -24,7 +27,7 @@ dev_packages = (
 
 setup(
     name="capon",
-    version="0.0.8",
+    version="0.0.9",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="Capital Market in Python",
@@ -51,7 +54,7 @@ setup(
     include_package_data=True,
     # package_data={'datasets': ['capon/resources/*']},
     classifiers=[
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
 )

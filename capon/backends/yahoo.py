@@ -8,6 +8,7 @@ import requests
 from datetime import datetime
 
 import pandas as pd
+from capon.backends import utils
 
 
 logger = logging.getLogger(__name__)
@@ -72,7 +73,7 @@ def get_stock(symbol, range="1d", interval=None, start_date=None, end_date=None)
     return jo
 
 
-def stock(symbol, range="1d", interval=None, start_date=None, end_date=None):
+def stock(symbol, range="1d", interval=None, start=None, end=None):
     """Get live & historical stock prices.
 
     Parameters
@@ -92,7 +93,7 @@ def stock(symbol, range="1d", interval=None, start_date=None, end_date=None):
         low, and close price for a given timepoint. If relevant, it will also include the adjusted closing price.
     """
     jo = get_stock(
-        symbol, range=range, interval=interval, start_date=start_date, end_date=end_date
+        symbol, range=range, interval=interval, start_date=start, end_date=end
     )
 
     result = jo["chart"]["result"][0]
@@ -114,7 +115,11 @@ def stock(symbol, range="1d", interval=None, start_date=None, end_date=None):
     )
 
     # len(ts), len(quote), len(adjclose)
-    stock = pd.concat([ts, quote, adjclose], axis=1)
+    stock = pd.concat([ts, quote, adjclose], axis=1).pipe(
+        utils.reindex,
+        ["timestamp", "symbol", "currency", "open", "low", "high", "close", "volume"],
+    )
+
     return stock
 
 

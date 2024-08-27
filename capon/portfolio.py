@@ -220,7 +220,7 @@ class Portfolio:
         history = pd.concat(
             [
                 capon.stock(
-                    symbol, start_date=start_time, end_date=end_time, interval="1d"
+                    symbol, start=start_time, end=end_time, interval="1d"
                 ).dropna()
                 for symbol in tqdm(symbols)
             ],
