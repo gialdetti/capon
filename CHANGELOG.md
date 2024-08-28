@@ -8,13 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.0.92] - 2024-08-28
+### Fixed
+* Revert to suport old pandas API too.
+
 ## [0.0.91] - 2024-08-28
-* MAINT: Address GitHub's detected security vulnerabilities
+* MAINT: Address GitHub's detected security vulnerabilities.
 
 ## [0.0.9] - 2024-08-27
 ### Added
-* MAINT: update setup.py to support multiple modes
-* API: support multiple tickers
+* MAINT: update setup.py to support multiple modes.
+* API: support multiple tickers.
 ### Fixed
 * Align with the pandas new APIs.
 

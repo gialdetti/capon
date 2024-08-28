@@ -34,7 +34,6 @@ def normalize_traces(
         .apply(
             lambda g: g[values] / g[g[index] >= to].nsmallest(1, index).iloc[0][values]
             - baseline,
-            include_groups=False,
         )
         .reset_index(by, drop=True)
         .astype(float)

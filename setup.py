@@ -27,7 +27,7 @@ dev_packages = (
 
 setup(
     name="capon",
-    version="0.0.91",
+    version="0.0.92",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="Capital Market in Python",
