@@ -12,7 +12,7 @@ def plot_history(
     value="close",
     by="symbol",
     point=False,
-    title="Market Performance",
+    title="Historical Performance",
 ):
     value_params = {}
 
