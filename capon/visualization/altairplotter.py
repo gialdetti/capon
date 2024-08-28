@@ -2,8 +2,17 @@ import altair as alt
 from capon.preprocessing import normalize_traces
 
 
+defaults = dict(line=dict(interpolate="monotone"))
+
+
 def plot_history(
-    stocks, normalize=None, index="timestamp", value="close", by="symbol", point=False
+    stocks,
+    normalize=None,
+    index="timestamp",
+    value="close",
+    by="symbol",
+    point=False,
+    title="Market Performance",
 ):
     value_params = {}
 
@@ -16,15 +25,17 @@ def plot_history(
             tooltip=dict(format="+.2%"),
         )
 
-    line_kwargs = {}
+    line_kwargs = defaults["line"].copy()
     if point:
-        line_kwargs = dict(point={"filled": False, "fill": "white"})
+        line_kwargs.update(dict(point={"filled": False, "fill": "white"}))
 
     highlight = alt.selection(type="single", on="mouseover", fields=[by], nearest=True)
 
     base = alt.Chart(stocks).encode(
-        x=f"{index}:T",
-        y=alt.Y(f"{value}:Q", axis=alt.Axis(**value_params.get("axis", {}))),
+        x=alt.X(f"{index}:T", axis=alt.Axis(format="%Y-%m-%d"), title=None),
+        y=alt.Y(
+            f"{value}:Q", axis=alt.Axis(**value_params.get("axis", {})), title=None
+        ),
         color=f"{by}:N",
     )
 
@@ -55,22 +66,18 @@ def plot_history(
     return chart.properties(
         width=800,
         height=240,
-        title=f"Historical Changes"
-        + (f" from {normalize}" if normalize is not None else ""),
+        title={
+            "text": title,
+            "subtitle": f"Relative to {normalize}" if normalize is not None else "",
+        },
     )
 
 
 if __name__ == "__main__":
-    import pandas as pd
-    from tqdm.auto import tqdm
     import capon
 
     tickers = ["BAC", "ALLY", "DFS", "SCHW"]
-
-    history = pd.concat(
-        [capon.stock(ticker, range="2y", interval="1mo") for ticker in tqdm(tickers)],
-        ignore_index=True,
-    )
+    history = capon.stocks(tickers, range="2y", interval="1mo", n_jobs=-1)
 
     chart = plot_history(history)
     chart.display()
@@ -81,33 +88,27 @@ if __name__ == "__main__":
     chart.configure_line(point={"filled": False, "fill": "white"}).display()
 
     normalize = history["timestamp"].unique()[12].strftime("%Y-%m-%d")
-
-    chart = plot_history(
-        history,
-        normalize=normalize,
-        point=True,
-    )
+    chart = plot_history(history, normalize=normalize, point=True)
     chart.display()
 
 
 if __name__ == "__main__":
     from capon.datasets import load_stock_indexes
 
-    tickers = (
+    indices_tickers = (
         load_stock_indexes()
         .pipe(lambda df: df[df["country_code"] == "US"])
         .symbol.tolist()
     )
 
-    stocks = pd.concat(
-        [
-            capon.stock(ticker, range="10y", interval="1mo").iloc[:-1]
-            for ticker in tqdm(tickers)
-        ],
-        ignore_index=True,
+    indices = capon.stocks(
+        indices_tickers, range="10y", interval="1mo", n_jobs=-1
     ).pipe(lambda df: df[df["timestamp"] >= "2013"])
-    stocks
+    indices
 
     capon.plot(
-        stocks.merge(load_stock_indexes(), on="symbol"), by="name", normalize="start"
-    )
+        indices.merge(load_stock_indexes(), on="symbol"),
+        by="name",
+        normalize="start",
+        title="Market Indices Change",
+    ).configure_legend(title=None).display()
