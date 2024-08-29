@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Changed
+* MAINT: Support minimal numpy, pandas versions.
+
+## [0.0.93] - 2024-08-28
+### Changed
 * Visualization: Styling altair plotter.
 * EXA: Market Performance Visualization.
 

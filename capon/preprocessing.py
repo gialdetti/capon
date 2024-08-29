@@ -30,7 +30,7 @@ def normalize_traces(
         values = listify(values)
 
     normalized = (
-        traces.groupby(by)
+        traces.groupby(by, group_keys=True)
         .apply(
             lambda g: g[values] / g[g[index] >= to].nsmallest(1, index).iloc[0][values]
             - baseline,

@@ -7,11 +7,12 @@ with open("README.md", "r") as readme_file:
 
 base_packages = [
     "requests>=2.31.0",
-    "numpy>=1.17.3",
-    "pandas>=1.0.3",
+    "numpy>=1.26.4",
+    "pandas>=1.5.0",
     "tqdm>=4.66.3",
     "joblib",
 ]
+
 plotly_packages = ["plotly>=4.7.1"]
 altair_packages = ["altair"]
 test_packages = ["pytest", "ipython", "tox"]
