@@ -1,5 +1,5 @@
 # Core
-requests==2.27.1
+requests==2.31.0
 numpy==1.22.4
 pandas==1.4.2
 scikit-learn==1.1.1
